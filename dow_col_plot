@@ -1,7 +1,7 @@
 import pandas as pd
 from ggplot import *
 
-# Column plot of ridership based on day of the week
+# Scatter/line plot of ridership based on day of the week
 turnstile_weather = pd.read_csv('C:/Users/Ryan/Desktop/improved_dataset/turnstile_weather_v2.csv')
 df = turnstile_weather.groupby('day_week').mean()
 df['day_week']= df.index
