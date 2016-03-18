@@ -1,0 +1,13 @@
+import pandas as pd
+from ggplot import *
+
+# Column plot of ridership based on day of the week
+turnstile_weather = pd.read_csv('C:/Users/Ryan/Desktop/improved_dataset/turnstile_weather_v2.csv')
+df = turnstile_weather.groupby('day_week').mean()
+df['day_week']= df.index
+df['day_weak'] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+plot = ggplot(df, aes(x='day_week', y = 'ENTRIESn_hourly', fill = 'weekday')) + \
+geom_point(size = 100) + geom_line() + xlab('Day of week') + ylab('Mean hourly entries') + \
+scale_x_continuous(labels = ['', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']) +\
+ggtitle('Hourly entries by day of week')
+ggsave(plot, 'C:\Users\Ryan\Desktop\improved_dataset\Entries_by_day_plot')
