@@ -1,0 +1,13 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Assembles histogram comparing rudership on days with or without rain
+turnstile_weather = pd.read_csv('turnstile_weather_v2.csv')
+plt.figure();
+turnstile_weather.ENTRIESn_hourly[turnstile_weather.rain != 1].hist(bins = 100, alpha = 0.5, range = (0,8000), label="Non-rainy days") 
+turnstile_weather.ENTRIESn_hourly[turnstile_weather.rain == 1].hist(bins = 100, alpha = 0.5, range = (0,8000), label="Rainy days")
+plt.legend()
+plt.xlabel('Entries Hourly')
+plt.ylabel('Frequency')
+plt.title('Ridership on rainy versus non-rainy days')
+plt.savefig(r'C:\Users\Ryan\Desktop\improved_dataset\Ridership_histogram')
